@@ -12,21 +12,16 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-
 
 public class MainActivity extends ActionBarActivity
 {
@@ -73,7 +68,6 @@ public class MainActivity extends ActionBarActivity
     private void getForecast(double latitude, double longitude)
     {
         String apiKey = "1c6ef2a3777dde8b40dc0b4260e3d553";
-
         String forecastUrl = "https://api.forecast.io/forecast/" + apiKey + "/" + latitude + "," + longitude;
 
         if (isNetworkAvailable())
@@ -183,7 +177,6 @@ public class MainActivity extends ActionBarActivity
         currentWeather.setSummary(current.getString("summary"));
         currentWeather.setIcon(current.getString("icon"));
         currentWeather.setTimeZone(timezone);
-
 
         return currentWeather;
     }

@@ -10,4 +10,10 @@
     <string name="network_error_title">Network Error</string>
     <string name="network_error_message">Please check your internet connection and try again</string>
     <string name="network_error_ok">OK</string>
+    <string name="summary_placeholder">Getting current weather....</string>
+    <string name="dash_placeholder">--</string>
+    <string name="precip_placeholder">RAIN/SNOW</string>
+    <string name="elipses_placeholder">...</string>
+    <string name="location_placeholder">Nashville, TN</string>
+    <string name="humidity_placeholder">HUMIDITY</string>
 </resources>

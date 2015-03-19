@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="--"
+        android:text="@string/dash_placeholder"
         android:id="@+id/tempLabel"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -34,7 +34,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="..."
+        android:text="@string/elipses_placeholder"
         android:id="@+id/timeLable"
         android:layout_alignTop="@+id/tempLabel"
         android:layout_centerHorizontal="true"
@@ -44,7 +44,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nashville, TN"
+        android:text="@string/location_placeholder"
         android:id="@+id/locationLabel"
         android:layout_above="@+id/tempLabel"
         android:layout_centerHorizontal="true"
@@ -80,7 +80,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HUMIDITY"
+                android:text="@string/humidity_placeholder"
                 android:id="@+id/humidityLabel"
                 android:textColor="#88ffffff"
                 android:gravity="center_horizontal"/>
@@ -88,7 +88,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="--"
+                android:text="@string/dash_placeholder"
                 android:id="@+id/humidityValue"
                 android:textColor="#ffffffff"
                 android:textSize="24sp"
@@ -104,7 +104,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RAIN/SNOW"
+                android:text="@string/precip_placeholder"
                 android:id="@+id/precipLabel"
                 android:textColor="#88ffffff"
                 android:gravity="center_horizontal"/>
@@ -112,7 +112,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="--"
+                android:text="@string/dash_placeholder"
                 android:id="@+id/precipValue"
                 android:textColor="#ffffffff"
                 android:textSize="24sp"
@@ -123,7 +123,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Getting current weather...."
+        android:text="@string/summary_placeholder"
         android:id="@+id/summaryLabel"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
