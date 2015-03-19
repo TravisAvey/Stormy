@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.okhttp.Call;
@@ -42,6 +43,7 @@ public class MainActivity extends ActionBarActivity
     @InjectView(R.id.iconImageView) ImageView mIconImageView;
     @InjectView(R.id.refreshImageView) ImageView mRefreshView;
     @InjectView(R.id.progressBar) ProgressBar mProgressBar;
+    @InjectView(R.id.relativeLayout) RelativeLayout mRelativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -68,7 +70,8 @@ public class MainActivity extends ActionBarActivity
 
     }
 
-    private void getForecast(double latitude, double longitude) {
+    private void getForecast(double latitude, double longitude)
+    {
         String apiKey = "1c6ef2a3777dde8b40dc0b4260e3d553";
 
         String forecastUrl = "https://api.forecast.io/forecast/" + apiKey + "/" + latitude + "," + longitude;
@@ -162,6 +165,7 @@ public class MainActivity extends ActionBarActivity
         mSummaryLabel.setText(mCurrentWeather.getSummary());
         Drawable icon = getResources().getDrawable(mCurrentWeather.getIconId());
         mIconImageView.setImageDrawable(icon);
+        mRelativeLayout.setBackgroundColor(mCurrentWeather.setBackground());
     }
 
     private CurrentWeather getCurrentDetails(String jsonData) throws JSONException

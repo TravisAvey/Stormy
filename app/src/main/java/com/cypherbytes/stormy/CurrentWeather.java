@@ -1,5 +1,7 @@
 package com.cypherbytes.stormy;
 
+import android.graphics.Color;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -65,6 +67,9 @@ public class CurrentWeather
         } else if (mIcon.equals("partly-cloudy-night"))
         {
             iconId = R.mipmap.cloudy_night;
+        } else if (mIcon.equals("cloudy"))
+        {
+            iconId = R.mipmap.cloudy;
         }
         return iconId;
     }
@@ -86,6 +91,40 @@ public class CurrentWeather
         Date dateTime = new Date(getTime() * 1000);
         String timeString = format.format(dateTime);
         return timeString;
+    }
+
+    public int setBackground()
+    {
+        int color = Color.parseColor("#fffc970b");
+        if(mIcon.equals("clear-day"))
+        {
+            color = Color.parseColor("#FF00B5FC");
+        } else if (mIcon.equals("clear-night"))
+        {
+            color = Color.parseColor("#FF030125");
+        } else if (mIcon.equals("rain"))
+        {
+            color = Color.parseColor("#FF12FC2B");
+        } else if (mIcon.equals("snow"))
+        {
+            color = Color.parseColor("#FFFC55D6");
+        } else if (mIcon.equals("sleet"))
+        {
+            color = Color.parseColor("#FF401FFC");
+        } else if (mIcon.equals("wind"))
+        {
+            color = Color.parseColor("#FF00FCE1");
+        } else if (mIcon.equals("fog") || mIcon.equals("cloudy"))
+        {
+            color = Color.parseColor("#FF969696");
+        } else if (mIcon.equals("partly-cloudy-day"))
+        {
+            color = Color.parseColor("#FF008486");
+        } else if (mIcon.equals("partly-cloudy-night"))
+        {
+            color = Color.parseColor("#FF1F1E1F");
+        }
+        return color;
     }
 
     public int getTemp()
