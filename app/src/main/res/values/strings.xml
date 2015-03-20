@@ -16,4 +16,6 @@
     <string name="elipses_placeholder">...</string>
     <string name="location_placeholder">Nashville, TN</string>
     <string name="humidity_placeholder">HUMIDITY</string>
+    <string name="title_activity_daily_forecast">DailyForecastActivity</string>
+    <string name="no_data_display">There is no data to display</string>
 </resources>

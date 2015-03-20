@@ -95,7 +95,7 @@ public class Current
         return timeString;
     }
 
-    public int setBackground()
+    /*public int setBackground()
     {
         int color = Color.parseColor("#fffc970b");
         if(mIcon.equals("clear-day"))
@@ -127,7 +127,7 @@ public class Current
             color = Color.parseColor("#FF1F1E1F");
         }
         return color;
-    }
+    } */
 
     public int getTemp()
     {
