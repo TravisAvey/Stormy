@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.cypherbytes.stormy.R;
 import com.cypherbytes.stormy.weather.Current;
 import com.cypherbytes.stormy.weather.Day;
@@ -27,7 +26,6 @@ import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,6 +50,7 @@ public class MainActivity extends ActionBarActivity
     @InjectView(R.id.refreshImageView) ImageView mRefreshView;
     @InjectView(R.id.progressBar) ProgressBar mProgressBar;
     @InjectView(R.id.relativeLayout) RelativeLayout mRelativeLayout;
+    @InjectView(R.id.locationLabel) TextView mLocationLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
