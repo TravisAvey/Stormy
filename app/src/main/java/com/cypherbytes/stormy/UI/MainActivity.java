@@ -1,10 +1,12 @@
 package com.cypherbytes.stormy.UI;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -161,6 +163,7 @@ public class MainActivity extends ActionBarActivity
 
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void updateDisplay()
     {
         Current current = mForecast.getCurrent();
@@ -170,8 +173,42 @@ public class MainActivity extends ActionBarActivity
         mPrecipValue.setText(current.getPrecipChance() + "%");
         mSummaryLabel.setText(current.getSummary());
         Drawable icon = getResources().getDrawable(current.getIconId());
-        mIconImageView.setImageDrawable(icon);
         //mRelativeLayout.setBackgroundColor(current.setBackground());
+
+        String bgIcon = current.getIcon();
+
+        switch (bgIcon)
+        {
+            case("clear-day"):
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_sunny));
+                break;
+            case("clear-night"):
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_night));
+                break;
+            case("rain"):
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_rainy));
+                break;
+            case("snow"):
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_snow));
+                break;
+            case("sleet"):
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_snow));
+                break;
+            case("fog"):
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_fog));
+                break;
+            case("cloudy"):
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_fog));
+                break;
+            case("partly-cloudy-night"):
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_night));
+                break;
+            case("overcast"):
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_fog));
+                break;
+            default:
+                mRelativeLayout.setBackground(getResources().getDrawable(R.drawable.bg_sunny));
+        }
     }
 
     private Forecast parseForecastDetails(String jsonData) throws JSONException
