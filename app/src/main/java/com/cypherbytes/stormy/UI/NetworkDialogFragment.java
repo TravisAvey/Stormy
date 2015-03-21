@@ -1,10 +1,12 @@
-package com.cypherbytes.stormy;
+package com.cypherbytes.stormy.UI;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
+
+import com.cypherbytes.stormy.R;
 
 /**
  * Created by travis on 3/16/15.

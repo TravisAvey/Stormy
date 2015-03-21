@@ -1,6 +1,8 @@
-package com.cypherbytes.stormy;
+package com.cypherbytes.stormy.weather;
 
 import android.graphics.Color;
+
+import com.cypherbytes.stormy.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,7 +11,7 @@ import java.util.TimeZone;
 /**
  * Created by travis on 3/17/15.
  */
-public class CurrentWeather
+public class Current
 {
     private String mIcon;
     private long mTime;

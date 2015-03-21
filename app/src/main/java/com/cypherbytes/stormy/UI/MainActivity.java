@@ -1,4 +1,4 @@
-package com.cypherbytes.stormy;
+package com.cypherbytes.stormy.UI;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -12,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.cypherbytes.stormy.R;
+import com.cypherbytes.stormy.weather.Current;
+import com.cypherbytes.stormy.weather.Forecast;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -28,7 +32,7 @@ public class MainActivity extends ActionBarActivity
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
-    private CurrentWeather mCurrentWeather;
+    private Forecast mForecast;
 
     @InjectView(R.id.tempLabel) TextView mTempLabel;
     @InjectView(R.id.timeLable) TextView mTimeLabel;
@@ -112,7 +116,7 @@ public class MainActivity extends ActionBarActivity
                         Log.v(TAG, jsonData);
                         if (response.isSuccessful())
                         {
-                            mCurrentWeather = getCurrentDetails(jsonData);
+                            mForecast = parseForecastDetails(jsonData);
                             runOnUiThread(new Runnable()
                             {
                                 @Override
@@ -152,24 +156,34 @@ public class MainActivity extends ActionBarActivity
 
     private void updateDisplay()
     {
-        mTempLabel.setText(mCurrentWeather.getTemp() + "");
-        mTimeLabel.setText("At " + mCurrentWeather.getFormattedTime() + " it will be");
-        mHumidityValue.setText(mCurrentWeather.getHumidity() + "");
-        mPrecipValue.setText(mCurrentWeather.getPrecipChance() + "%");
-        mSummaryLabel.setText(mCurrentWeather.getSummary());
-        Drawable icon = getResources().getDrawable(mCurrentWeather.getIconId());
+        Current current = mForecast.getCurrent();
+        mTempLabel.setText(current.getTemp() + "");
+        mTimeLabel.setText("At " + current.getFormattedTime() + " it will be");
+        mHumidityValue.setText(current.getHumidity() + "");
+        mPrecipValue.setText(current.getPrecipChance() + "%");
+        mSummaryLabel.setText(current.getSummary());
+        Drawable icon = getResources().getDrawable(current.getIconId());
         mIconImageView.setImageDrawable(icon);
-        mRelativeLayout.setBackgroundColor(mCurrentWeather.setBackground());
+        mRelativeLayout.setBackgroundColor(current.setBackground());
     }
 
-    private CurrentWeather getCurrentDetails(String jsonData) throws JSONException
+    private Forecast parseForecastDetails(String jsonData) throws JSONException
+    {
+        Forecast forecast = new Forecast();
+        forecast.setCurrent(getCurrentDetails(jsonData));
+
+
+        return forecast;
+    }
+
+    private Current getCurrentDetails(String jsonData) throws JSONException
     {
         JSONObject forecast = new JSONObject(jsonData);
         String timezone = forecast.getString("timezone");
 
         JSONObject current = forecast.getJSONObject("currently");
 
-        CurrentWeather currentWeather = new CurrentWeather();
+        Current currentWeather = new Current();
         currentWeather.setHumidity(current.getDouble("humidity"));
         currentWeather.setTemp(current.getInt("temperature"));
         currentWeather.setTime(current.getLong("time"));
