@@ -7,15 +7,15 @@ import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.cypherbytes.stormy.R;
 import com.cypherbytes.stormy.weather.Current;
 import com.cypherbytes.stormy.weather.Day;
@@ -26,10 +26,13 @@ import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -39,6 +42,7 @@ public class MainActivity extends ActionBarActivity
 
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final String DAILY_FORECAST = "DAILY_FORECAST";
+    public static final String HOURLY_FORECAST = "HOURLY_FORECAST";
 
     private Forecast mForecast;
 
@@ -321,6 +325,14 @@ public class MainActivity extends ActionBarActivity
     {
         Intent intent = new Intent(this, DailyForecastActivity.class);
         intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.hourlyButton)
+    public void startHourlyActivity(View view)
+    {
+        Intent intent = new Intent(this, HourlyForecastActivity.class);
+        intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyForecast());
         startActivity(intent);
     }
 }
